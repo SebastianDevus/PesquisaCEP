@@ -22,6 +22,8 @@ function setup() {
     inputCEP.addEventListener("keydown", (key) => {
         if (key.keyCode == 13) {
             event.preventDefault();
+            let CEP = inputCEP.value;
+            fazFetch(camposDeExibicao, CEP);
         }
     });
 
@@ -48,14 +50,26 @@ async function fazFetch(camposDeExibicao, CEP) {
 
     if (bairro == "") {
         bairro = "Bairro não incluído"
+        camposDeExibicao.exibeBairro.style.color="red";
+    }
+    else {
+        camposDeExibicao.exibeBairro.style.color="wheat";
     }
 
     if (logradouro == "") {
         logradouro = "Logradouro não incluído"
+        camposDeExibicao.exibeLogradouro.style.color="red";
+    }
+    else {
+        camposDeExibicao.exibeLogradouro.style.color="wheat";
     }
 
     if (complemento == "" || complemento == undefined) {
         complemento = "Complemento não incluído"
+        camposDeExibicao.exibeComplemento.style.color="red";
+    }
+    else {
+        camposDeExibicao.exibeComplemento.style.color="wheat";
     }
 
     camposDeExibicao.exibeCidadeUF.innerText = `${cidade}/${estado}`;
